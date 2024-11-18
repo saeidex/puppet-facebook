@@ -1,13 +1,13 @@
-import path from "node:path";
+import { randomUUID } from "node:crypto";
 import fs from "node:fs";
+import path from "node:path";
 import puppeteer, {
-  KnownDevices,
   Browser,
+  HTTPRequest,
+  KnownDevices,
   Page,
   PuppeteerLaunchOptions,
-  HTTPRequest,
 } from "puppeteer";
-import { randomUUID } from "node:crypto";
 
 type BrowserThread = {
   browser: Browser;

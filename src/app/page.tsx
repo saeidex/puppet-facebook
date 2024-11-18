@@ -1,5 +1,4 @@
 import { RunBrowserManager } from "@/components/run-browser-manager";
-import React from "react";
 
 export default function HomePage() {
   return (

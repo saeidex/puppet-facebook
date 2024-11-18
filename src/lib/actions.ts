@@ -1,11 +1,11 @@
 "use server";
 
 import {
+  ThreadManager,
   closeBrowsers,
   initializeBrowsers,
   navigateAll,
   takeScreenshotsAll,
-  ThreadManager,
 } from "./thread-manager";
 
 export async function handleThreadAutomation(

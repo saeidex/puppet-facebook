@@ -1,6 +1,12 @@
 "use client";
 
-import React from "react";
+import { useRouter } from "next/navigation";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,7 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -20,11 +25,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { handleThreadAutomation } from "@/lib/actions";
-import { useRouter } from "next/navigation";
+
 import { Switch } from "./ui/switch";
 
 const threadFormSchema = z.object({
@@ -91,7 +99,7 @@ export function RunBrowserManager() {
                   name="fastmode"
                   control={threadForm.control}
                   render={({ field }) => (
-                    <FormItem className="flex gap-2 text-balance flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between gap-2 text-balance rounded-lg border p-3 shadow-sm">
                       <div className="space-y-0.5">
                         <FormLabel>Fast mode</FormLabel>
                         <FormDescription>

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./styles/globals.css";
+
 import NavigationMenu from "@/components/navigation-menu";
+
+import "./styles/globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="h-dvh w-dvw flex flex-col">
+        <div className="flex h-dvh w-dvw flex-col">
           <NavigationMenu />
           <main className="h-full w-full">{children}</main>
         </div>
