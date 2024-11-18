@@ -26,7 +26,7 @@ const createThreadManager = (): ThreadManager => ({
 const initializeBrowsers = async (
   threadCount: number,
   device = KnownDevices["Pixel 4"],
-  launchOptions: Partial<PuppeteerLaunchOptions> = {}
+  launchOptions: Partial<PuppeteerLaunchOptions> = {},
 ): Promise<ThreadManager> => {
   const manager = createThreadManager();
 
@@ -69,7 +69,7 @@ const initializeBrowsers = async (
         (layout) => {
           window.moveTo(
             layout.col * (layout.width + 10),
-            layout.row * (layout.height + 10)
+            layout.row * (layout.height + 10),
           );
         },
         {
@@ -77,13 +77,13 @@ const initializeBrowsers = async (
           col,
           width: device.viewport.width,
           height: device.viewport.height,
-        }
+        },
       );
     }
 
     manager.isInitialized = true;
     console.log(
-      `Successfully initialized ${threadCount} browser threads with ${device.userAgent}`
+      `Successfully initialized ${threadCount} browser threads with ${device.userAgent}`,
     );
     return manager;
   } catch (error) {
@@ -94,7 +94,7 @@ const initializeBrowsers = async (
 
 const navigateAll = async (
   manager: ThreadManager,
-  url: string
+  url: string,
 ): Promise<void> => {
   await Promise.all(
     manager.threads.map(async ({ page }, index) => {
@@ -104,7 +104,7 @@ const navigateAll = async (
       } catch (error) {
         console.error(`Thread ${index + 1}: Navigation failed:`, error);
       }
-    })
+    }),
   );
 };
 
@@ -117,7 +117,7 @@ const closeBrowsers = async (manager: ThreadManager): Promise<void> => {
       } catch (error) {
         console.error(`Thread ${index + 1}: Failed to close browser:`, error);
       }
-    })
+    }),
   );
 
   manager.threads = [];
@@ -126,7 +126,7 @@ const closeBrowsers = async (manager: ThreadManager): Promise<void> => {
 
 const executeForAll = async (
   manager: ThreadManager,
-  action: (page: Page) => Promise<void>
+  action: (page: Page) => Promise<void>,
 ): Promise<void> => {
   await Promise.all(
     manager.threads.map(async ({ page }, index) => {
@@ -136,7 +136,7 @@ const executeForAll = async (
       } catch (error) {
         console.error(`Thread ${index + 1}: Action failed:`, error);
       }
-    })
+    }),
   );
 };
 
@@ -151,7 +151,7 @@ const takeScreenshotsAll = async (manager: ThreadManager) => {
     const imgId = randomUUID();
     const screenshotPath = path.join(
       screenshotsDir,
-      `screenshot-${Date.now()}-${imgId}.png`
+      `screenshot-${Date.now()}-${imgId}.png`,
     );
     await page.screenshot({
       path: screenshotPath,

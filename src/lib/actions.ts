@@ -10,7 +10,7 @@ import {
 
 export async function handleThreadAutomation(
   threads: number,
-  fastmode: boolean = false
+  fastmode: boolean = false,
 ) {
   let manager: ThreadManager | null = null;
 
