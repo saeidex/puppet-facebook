@@ -60,7 +60,7 @@ export function RunBrowserManager() {
     <>
       <Form {...threadForm}>
         <form onSubmit={threadForm.handleSubmit(onSubmit)}>
-          <Card className="w-[350px]">
+          <Card className="w-[250px]">
             <CardHeader>
               <CardTitle>Open browsers</CardTitle>
               <CardDescription>Run multiple browser instance</CardDescription>
@@ -91,11 +91,12 @@ export function RunBrowserManager() {
                   name="fastmode"
                   control={threadForm.control}
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex gap-2 text-balance flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                       <div className="space-y-0.5">
                         <FormLabel>Fast mode</FormLabel>
                         <FormDescription>
-                          Fast mode will hide the browser windows
+                          Fast mode will hide the browser windows, also blocks
+                          request for images & unnecessary things to load
                         </FormDescription>
                       </div>
                       <FormControl>

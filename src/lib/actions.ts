@@ -10,13 +10,13 @@ import {
 
 export async function handleThreadAutomation(
   threads: number,
-  fastmode: boolean = false,
+  headless = false
 ) {
   let manager: ThreadManager | null = null;
 
   try {
     manager = await initializeBrowsers(threads, undefined, {
-      headless: fastmode,
+      headless,
     });
 
     await navigateAll(manager, "https://m.facebook.com");
