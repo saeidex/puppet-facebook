@@ -25,12 +25,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { handleThreadAutomation } from "@/lib/actions";
 
 import { Switch } from "./ui/switch";
@@ -68,7 +62,7 @@ export function RunBrowserManager() {
     <>
       <Form {...threadForm}>
         <form onSubmit={threadForm.handleSubmit(onSubmit)}>
-          <Card className="w-[250px]">
+          <Card className="w-[350px]">
             <CardHeader>
               <CardTitle>Open browsers</CardTitle>
               <CardDescription>Run multiple browser instance</CardDescription>
@@ -99,12 +93,11 @@ export function RunBrowserManager() {
                   name="fastmode"
                   control={threadForm.control}
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between gap-2 text-balance rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between gap-2 rounded-lg border p-3 shadow-sm">
                       <div className="space-y-0.5">
                         <FormLabel>Fast mode</FormLabel>
                         <FormDescription>
-                          Fast mode will hide the browser windows, also blocks
-                          request for images & unnecessary things to load
+                          Hidden browsers (headless mode)
                         </FormDescription>
                       </div>
                       <FormControl>
